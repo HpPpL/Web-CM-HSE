@@ -1,0 +1,62 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Загрузка файла</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+
+<body>
+  <div class="header">
+    <h1>Управление делами НИУ ВШЭ</h1>
+  </div>
+  <div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Загрузить">
+    </form>
+  </div>
+  
+  <div class="info-text">
+    <p>Убедитесь, что ваш файл соответствует следующим требованиям: он должен быть в формате xlsx, содержать все необходимые колонки и не превышать размер в 2 МБ.</p>
+  </div>
+  
+  <div class="info-images">
+    <img src="{{ url_for('static', filename='info1.png') }}" alt="Информационное изображение 1" class="info-image">
+    <img src="{{ url_for('static', filename='info2.png') }}" alt="Информационное изображение 2" class="info-image">
+  </div>
+  
+  <div class="footer">
+    © НИУ ВШЭ 1993–2024
+  </div>
+	<script>
+		$(document).ready(function() {
+		  $('form').on('submit', function(event) {
+			event.preventDefault(); // Отключаем обычную отправку формы
+
+			var formData = new FormData(this);
+
+			$.ajax({
+			  type: 'POST',
+			  url: '/upload',
+			  data: formData,
+			  contentType: false,
+			  processData: false,
+			  success: function(response) {
+				if (response.success) {
+				  alert(response.message); // или можно обновить элемент на странице
+				} else {
+				  // Добавляем сообщение об ошибке под кнопку
+				  $('.form-container').append('<div class="error-message">' + response.message + '</div>');
+				}
+			  }
+			});
+		  });
+		});
+	</script>
+</body>
+</html>

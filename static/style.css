@@ -1,0 +1,75 @@
+/* style.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #1c539e; /* Тёмно-синий цвет */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+.header h1 {
+  margin: 0;
+}
+.form-container {
+  background-color: white;
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input[type='file'] {
+  margin-bottom: 10px;
+  width: 100%;
+}
+input[type='submit'] {
+  background-color: #1c539e; /* Тёмно-синий цвет */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+}
+input[type='submit']:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  background-color: #1c539e;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed; /* */
+  bottom: 0; /* */
+  width: 100%;
+}
+
+.info-text {
+  margin: 20px auto;
+  width: 80%;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.info-images {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-image {
+  width: 48%; /* Позволяет двум изображениям быть по бокам друг от друга */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
